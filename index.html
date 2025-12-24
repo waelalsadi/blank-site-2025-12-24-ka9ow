@@ -1,11 +1,740 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Auto AI Digital Lab - دورة بيع المنتجات الرقمية</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            direction: rtl;
+            text-align: right;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4a5568;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        .nav-cta {
+            background-color: #e6e9ff;
+            color: #667eea;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .nav-cta:hover {
+            background-color: #d4d9ff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            background: #faf9f7;
+            padding: 100px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -100px;
+            width: 600px;
+            height: 600px;
+            background: #f4f196;
+            border-radius: 50%;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 100px;
+            left: -50px;
+            width: 400px;
+            height: 400px;
+            background: #f4f196;
+            border-radius: 50%;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 56px;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            color: #1a202c;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px 0 60px;
+            flex-wrap: wrap;
+        }
+
+        .hero-button {
+            padding: 16px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hero-button.primary {
+            background-color: #e6e9ff;
+            color: #667eea;
+        }
+
+        .hero-button.primary:hover {
+            background-color: #d4d9ff;
+            transform: translateY(-2px);
+        }
+
+        .hero-button.secondary {
+            background-color: transparent;
+            color: #4a5568;
+            border: 2px solid #e2e8f0;
+        }
+
+        .hero-button.secondary:hover {
+            border-color: #cbd5e0;
+            background-color: #f7fafc;
+        }
+
+        .video-container {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .video-wrapper {
+            position: relative;
+            background: #2d3748;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            aspect-ratio: 16/9;
+            position: relative;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+
+        .video-overlay .logo-text {
+            font-size: 32px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+
+        .play-button:hover {
+            background: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .play-button::after {
+            content: '▶';
+            color: #667eea;
+            font-size: 24px;
+            margin-right: -3px;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .control-icon {
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .control-icon:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .message-annotation {
+            position: absolute;
+            top: -30px;
+            left: -50px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-size: 14px;
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        .message-annotation::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 30px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid white;
+        }
+
+        .arrow-curve {
+            position: absolute;
+            top: -50px;
+            left: -80px;
+            width: 100px;
+            height: 100px;
+            stroke: #2d3748;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .emoji {
+            font-size: 30px;
+            margin: 0 5px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ffc107;
+            color: #333;
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: #ffb300;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
+        }
+
+        .challenges {
+            padding: 100px 20px;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenges .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .challenges-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .challenges-title-section {
+            flex: 1;
+            min-width: 300px;
+            text-align: right;
+        }
+
+        .challenges h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #1a202c;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .challenges-subtitle {
+            font-size: 14px;
+            color: #718096;
+            line-height: 1.8;
+            text-align: right;
+        }
+
+        .carousel-controls {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .carousel-arrow {
+            width: 45px;
+            height: 45px;
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            color: #2d3748;
+        }
+
+        .carousel-arrow:hover {
+            background-color: #f7fafc;
+            border-color: #cbd5e0;
+        }
+
+        .carousel-arrow.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .carousel-arrow.disabled:hover {
+            background-color: white;
+            border-color: #e2e8f0;
+        }
+
+        .challenges-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .challenge-card {
+            background: #2d3748;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 350px;
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .challenge-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        .challenge-card h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: white;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .challenge-card p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .challenge-card .learn-more {
+            margin-top: auto;
+            padding-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .challenge-card .learn-more .arrow-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 1024px) {
+            .challenges-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-button {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .message-annotation {
+                display: none;
+            }
+
+            .challenges h3 {
+                font-size: 24px;
+            }
+
+            .challenges-subtitle {
+                font-size: 13px;
+            }
+
+            .challenges-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .challenge-card {
+                min-height: auto;
+            }
+
+            header h1 {
+                font-size: 20px;
+            }
+
+            .challenges-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .carousel-controls {
+                align-self: flex-start;
+            }
+
+            .challenges-title-section {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <p>hello world</p>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <span>HeyFriends!</span>
+            </div>
+            <nav>
+                <a href="#challenges">التحديات</a>
+                <a href="#" class="nav-cta">انضم لقائمة الانتظار</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>اصنع منتجات رقمية مربحة تدر عليك دخلاً شهرياً متزايداً</h2>
+            <p>استخدم الاستراتيجيات والمواهب التي تدعم أكبر المبدعين وحقق أهدافك على يوتيوب، بشكل أسرع.</p>
+            
+            <div class="hero-buttons">
+                <button class="hero-button primary">انضم لقائمة الانتظار</button>
+                <button class="hero-button secondary">شاهد الفيديو</button>
+            </div>
+
+            <div class="video-container">
+                <svg class="arrow-curve" style="position: absolute; top: -60px; left: -100px;">
+                    <path d="M 80 10 Q 50 30, 60 60" stroke="#2d3748" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
+                            <polygon points="0 0, 6 3, 0 6" fill="#2d3748"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="message-annotation">رسالة من علي</div>
+                
+                <div class="video-wrapper">
+                    <div class="video-placeholder">
+                        <div class="video-overlay">
+                            <div class="logo-text">
+                                <span>🚀</span>
+                                <span>HeyFriends!</span>
+                            </div>
+                        </div>
+                        <div class="play-button"></div>
+                        <div class="video-controls">
+                            <div class="control-icon">🔊</div>
+                            <div class="control-icon">⚙️</div>
+                            <div class="control-icon">⛶</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="challenges" id="challenges">
+        <div class="container">
+            <div class="challenges-header">
+                <div class="challenges-title-section">
+                    <h3>منظومة شركاء الهندسة والبناء</h3>
+                    <p class="challenges-subtitle">نربطك بشركاء متعمدين في كل مرحلة من مراحل مشروعك<br>ضمن منظومة واحدة متكاملة.</p>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-arrow" id="prevBtn" onclick="scrollCarousel(-1)">→</button>
+                    <button class="carousel-arrow" id="nextBtn" onclick="scrollCarousel(1)">←</button>
+                </div>
+            </div>
+
+            <div class="challenges-carousel">
+                <div class="challenges-grid" id="challengesGrid">
+                    <div class="challenge-card">
+                        <div class="challenge-icon">🏗️</div>
+                        <h4>مكاتب التصميم المعماري والداخلي</h4>
+                        <p>نقطة البداية لأي مشروع ناجح. مكاتب تصميم معتمدة تحول أفكارك إلى مخططات واقعية متوافقة مع متطلباتك والمواصفات والمعايير والقوانين.</p>
+                        <div class="learn-more">
+                            <span>تصفح المكاتب</span>
+                            <span class="arrow-icon">↖</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-icon">🏢</div>
+                        <h4>شركات الإشراف الهندسي</h4>
+                        <p>ضمان الجودة في كل مرحلة. شركات إشراف هندسي معتمدة تضمن تنفيذ مشروعك وفق المخططات والمواصفات المعتمدة وبجودة عالية.</p>
+                        <div class="learn-more">
+                            <span>تصفح الشركات</span>
+                            <span class="arrow-icon">↖</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-icon">👷</div>
+                        <h4>شركات الإنشاء والتنفيذ</h4>
+                        <p>من المخطط إلى الواقع. شركات بناء وإنشاءات موثوقة تنفيذ مشروع البناء وفق المخططات والمواصفات وبأعلى معايير الجودة.</p>
+                        <div class="learn-more">
+                            <span>تصفح الشركات</span>
+                            <span class="arrow-icon">↖</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-icon">🏗️</div>
+                        <h4>شركات التوريد والمواد</h4>
+                        <p>موادة معتمدة... وجودة مضمونة. شركات موردين مستلزمات البناء والتشطيب. من الأساس حتى التشطيب، مع ضمان جودة التوريد.</p>
+                        <div class="learn-more">
+                            <span>تصفح الموردين</span>
+                            <span class="arrow-icon">↖</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Auto AI Digital Lab. جميع الحقوق محفوظة.</p>
+            <p>هذا المنتج يقدم قيمة حقيقية ويساعد الآلاف من الأشخاص على تحقيق أحلامهم المالية.</p>
+        </div>
+    </footer>
+
+    <script>
+        const challengesGrid = document.getElementById('challengesGrid');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function scrollCarousel(direction) {
+            // Carousel is now a grid, so we disable scrolling
+            return;
+        }
+
+        function updateArrowStates() {
+            // Disable arrows as we're using a grid layout
+            prevBtn.classList.add('disabled');
+            nextBtn.classList.add('disabled');
+        }
+
+        window.addEventListener('load', updateArrowStates);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        document.querySelectorAll('.cta-button, .hero-button').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('شكراً لاهتمامك! سيتم توجيهك للدفع الآن.');
+            });
+        });
+    </script>
 </body>
 </html>
