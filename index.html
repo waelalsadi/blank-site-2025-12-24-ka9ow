@@ -325,6 +325,165 @@
             margin: 0 5px;
         }
 
+        .challenges-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenges-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .challenges-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .challenges-header {
+            text-align: right;
+            margin-bottom: 60px;
+        }
+
+        .challenges-title {
+            color: white;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .challenges-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            padding: 0 80px;
+        }
+
+        .slider-container {
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 30px;
+        }
+
+        .challenge-card {
+            min-width: calc(25% - 22.5px);
+            background-size: cover;
+            background-position: center;
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .challenge-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
+
+        .challenge-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .challenge-title {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .slider-nav:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-nav.prev {
+            right: 10px;
+        }
+
+        .slider-nav.next {
+            left: 10px;
+        }
+
+        .slider-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .indicator-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator-dot.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
         .cta-button {
             display: inline-block;
             background-color: #ffc107;
@@ -345,163 +504,6 @@
             box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
         }
 
-        .challenges {
-            padding: 100px 20px;
-            background: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .challenges .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .challenges-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 60px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .challenges-title-section {
-            flex: 1;
-            min-width: 300px;
-            text-align: right;
-        }
-
-        .challenges h3 {
-            font-size: 32px;
-            margin-bottom: 15px;
-            color: #1a202c;
-            font-weight: 700;
-            text-align: right;
-        }
-
-        .challenges-subtitle {
-            font-size: 14px;
-            color: #718096;
-            line-height: 1.8;
-            text-align: right;
-        }
-
-        .carousel-controls {
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-        }
-
-        .carousel-arrow {
-            width: 45px;
-            height: 45px;
-            background-color: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 18px;
-            color: #2d3748;
-        }
-
-        .carousel-arrow:hover {
-            background-color: #f7fafc;
-            border-color: #cbd5e0;
-        }
-
-        .carousel-arrow.disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .carousel-arrow.disabled:hover {
-            background-color: white;
-            border-color: #e2e8f0;
-        }
-
-        .challenges-carousel {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .challenges-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
-
-        .challenge-card {
-            background: #2d3748;
-            padding: 40px 30px;
-            border-radius: 12px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 350px;
-        }
-
-        .challenge-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .challenge-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            font-size: 24px;
-        }
-
-        .challenge-card h4 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: white;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        .challenge-card p {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-            font-weight: 400;
-        }
-
-        .challenge-card .learn-more {
-            margin-top: auto;
-            padding-top: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: white;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .challenge-card .learn-more .arrow-icon {
-            width: 24px;
-            height: 24px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-
         footer {
             background-color: #333;
             color: white;
@@ -515,8 +517,12 @@
         }
 
         @media (max-width: 1024px) {
-            .challenges-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .challenge-card {
+                min-width: calc(33.333% - 20px);
+            }
+
+            .challenges-title {
+                font-size: 36px;
             }
         }
 
@@ -547,37 +553,35 @@
                 display: none;
             }
 
-            .challenges h3 {
-                font-size: 24px;
-            }
-
-            .challenges-subtitle {
-                font-size: 13px;
-            }
-
-            .challenges-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .challenge-card {
-                min-height: auto;
-            }
-
             header h1 {
                 font-size: 20px;
             }
 
-            .challenges-header {
-                flex-direction: column;
-                align-items: flex-start;
+            .challenges-section {
+                padding: 60px 20px;
             }
 
-            .carousel-controls {
-                align-self: flex-start;
+            .challenges-title {
+                font-size: 28px;
             }
 
-            .challenges-title-section {
-                width: 100%;
+            .challenges-subtitle {
+                font-size: 14px;
+            }
+
+            .slider-wrapper {
+                padding: 0 60px;
+            }
+
+            .challenge-card {
+                min-width: calc(100% - 0px);
+                height: 400px;
+            }
+
+            .slider-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
             }
         }
     </style>
@@ -590,7 +594,6 @@
                 <span>HeyFriends!</span>
             </div>
             <nav>
-                <a href="#challenges">التحديات</a>
                 <a href="#" class="nav-cta">انضم لقائمة الانتظار</a>
             </nav>
         </div>
@@ -637,57 +640,54 @@
         </div>
     </section>
 
-    <section class="challenges" id="challenges">
-        <div class="container">
+    <section class="challenges-section">
+        <div class="challenges-container">
             <div class="challenges-header">
-                <div class="challenges-title-section">
-                    <h3>منظومة شركاء الهندسة والبناء</h3>
-                    <p class="challenges-subtitle">نربطك بشركاء متعمدين في كل مرحلة من مراحل مشروعك<br>ضمن منظومة واحدة متكاملة.</p>
-                </div>
-                <div class="carousel-controls">
-                    <button class="carousel-arrow" id="prevBtn" onclick="scrollCarousel(-1)">→</button>
-                    <button class="carousel-arrow" id="nextBtn" onclick="scrollCarousel(1)">←</button>
-                </div>
+                <h2 class="challenges-title">التحديات الخمسة الرئيسية التي تمنعك من صناعة المنتجات الرقمية</h2>
+                <p class="challenges-subtitle">اكتشف العقبات الحقيقية وكيفية التغلب عليها</p>
             </div>
 
-            <div class="challenges-carousel">
-                <div class="challenges-grid" id="challengesGrid">
-                    <div class="challenge-card">
-                        <div class="challenge-icon">🏗️</div>
-                        <h4>مكاتب التصميم المعماري والداخلي</h4>
-                        <p>نقطة البداية لأي مشروع ناجح. مكاتب تصميم معتمدة تحول أفكارك إلى مخططات واقعية متوافقة مع متطلباتك والمواصفات والمعايير والقوانين.</p>
-                        <div class="learn-more">
-                            <span>تصفح المكاتب</span>
-                            <span class="arrow-icon">↖</span>
+            <div class="slider-wrapper">
+                <button class="slider-nav prev" onclick="moveSlider(-1)">❮</button>
+                <button class="slider-nav next" onclick="moveSlider(1)">❯</button>
+                
+                <div class="slider-container">
+                    <div class="slider-track" id="sliderTrack">
+                        <div class="challenge-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('data:image/svg+xml,%3Csvg width=\'400\' height=\'450\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'400\' height=\'450\' fill=\'%23667eea\'/%3E%3C/svg%3E');">
+                            <div class="challenge-content">
+                                <h3 class="challenge-title">عدم معرفة من أين تبدأ</h3>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('data:image/svg+xml,%3Csvg width=\'400\' height=\'450\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'400\' height=\'450\' fill=\'%23f093fb\'/%3E%3C/svg%3E');">
+                            <div class="challenge-content">
+                                <h3 class="challenge-title">الخوف من الفشل</h3>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('data:image/svg+xml,%3Csvg width=\'400\' height=\'450\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'400\' height=\'450\' fill=\'%234facfe\'/%3E%3C/svg%3E');">
+                            <div class="challenge-content">
+                                <h3 class="challenge-title">نقص المهارات التقنية</h3>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('data:image/svg+xml,%3Csvg width=\'400\' height=\'450\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'400\' height=\'450\' fill=\'%2343e97b\'/%3E%3C/svg%3E');">
+                            <div class="challenge-content">
+                                <h3 class="challenge-title">صعوبة التسويق</h3>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('data:image/svg+xml,%3Csvg width=\'400\' height=\'450\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'400\' height=\'450\' fill=\'%23fa709a\'/%3E%3C/svg%3E');">
+                            <div class="challenge-content">
+                                <h3 class="challenge-title">قلة رأس المال</h3>
+                            </div>
                         </div>
                     </div>
-                    <div class="challenge-card">
-                        <div class="challenge-icon">🏢</div>
-                        <h4>شركات الإشراف الهندسي</h4>
-                        <p>ضمان الجودة في كل مرحلة. شركات إشراف هندسي معتمدة تضمن تنفيذ مشروعك وفق المخططات والمواصفات المعتمدة وبجودة عالية.</p>
-                        <div class="learn-more">
-                            <span>تصفح الشركات</span>
-                            <span class="arrow-icon">↖</span>
-                        </div>
-                    </div>
-                    <div class="challenge-card">
-                        <div class="challenge-icon">👷</div>
-                        <h4>شركات الإنشاء والتنفيذ</h4>
-                        <p>من المخطط إلى الواقع. شركات بناء وإنشاءات موثوقة تنفيذ مشروع البناء وفق المخططات والمواصفات وبأعلى معايير الجودة.</p>
-                        <div class="learn-more">
-                            <span>تصفح الشركات</span>
-                            <span class="arrow-icon">↖</span>
-                        </div>
-                    </div>
-                    <div class="challenge-card">
-                        <div class="challenge-icon">🏗️</div>
-                        <h4>شركات التوريد والمواد</h4>
-                        <p>موادة معتمدة... وجودة مضمونة. شركات موردين مستلزمات البناء والتشطيب. من الأساس حتى التشطيب، مع ضمان جودة التوريد.</p>
-                        <div class="learn-more">
-                            <span>تصفح الموردين</span>
-                            <span class="arrow-icon">↖</span>
-                        </div>
-                    </div>
+                </div>
+
+                <div class="slider-indicator" id="sliderIndicator">
+                    <span class="indicator-dot active" onclick="goToSlide(0)"></span>
+                    <span class="indicator-dot" onclick="goToSlide(1)"></span>
                 </div>
             </div>
         </div>
@@ -701,23 +701,6 @@
     </footer>
 
     <script>
-        const challengesGrid = document.getElementById('challengesGrid');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        function scrollCarousel(direction) {
-            // Carousel is now a grid, so we disable scrolling
-            return;
-        }
-
-        function updateArrowStates() {
-            // Disable arrows as we're using a grid layout
-            prevBtn.classList.add('disabled');
-            nextBtn.classList.add('disabled');
-        }
-
-        window.addEventListener('load', updateArrowStates);
-
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -734,6 +717,43 @@
             button.addEventListener('click', function() {
                 alert('شكراً لاهتمامك! سيتم توجيهك للدفع الآن.');
             });
+        });
+
+        let currentSlide = 0;
+        const sliderTrack = document.getElementById('sliderTrack');
+        const indicators = document.querySelectorAll('.indicator-dot');
+        const totalCards = 5;
+        const cardsPerView = window.innerWidth <= 768 ? 1 : 4;
+        const maxSlides = Math.ceil(totalCards / cardsPerView);
+
+        function updateSlider() {
+            const cardWidth = sliderTrack.querySelector('.challenge-card').offsetWidth;
+            const gap = 30;
+            const moveAmount = (cardWidth + gap) * cardsPerView;
+            sliderTrack.style.transform = `translateX(${currentSlide * moveAmount}px)`;
+            
+            indicators.forEach((dot, index) => {
+                dot.classList.toggle('active', index === Math.abs(currentSlide));
+            });
+        }
+
+        function moveSlider(direction) {
+            currentSlide += direction;
+            
+            if (currentSlide > 0) currentSlide = 0;
+            if (currentSlide < -(maxSlides - 1)) currentSlide = -(maxSlides - 1);
+            
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = -index;
+            updateSlider();
+        }
+
+        window.addEventListener('resize', () => {
+            currentSlide = 0;
+            updateSlider();
         });
     </script>
 </body>
